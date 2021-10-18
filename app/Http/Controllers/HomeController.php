@@ -47,4 +47,9 @@ class HomeController extends Controller
     {
         return view('car-details');
     }
+    
+    public function addPurchases()
+    {
+        return view('add-purchases');
+    }
 }
