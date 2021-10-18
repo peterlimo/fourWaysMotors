@@ -67,4 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/purchases', [App\Http\Controllers\HomeController::class, 'purchases'])->name('purchases');
+Route::get('/sales', [App\Http\Controllers\HomeController::class, 'sales'])->name('sales');
+Route::get('/make-sale/{car_id}', [App\Http\Controllers\HomeController::class, 'makeSale'])->name('make.sale');
+Route::get('/car-details/{car_id}', [App\Http\Controllers\HomeController::class, 'carDetails'])->name('car.details');
 Route::get('/add-purchases', [App\Http\Controllers\HomeController::class, 'addPurchases'])->name('add.purchases');

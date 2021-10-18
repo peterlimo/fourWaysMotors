@@ -280,8 +280,8 @@
             </div>
           </div>
           <div class="alert alert-danger">
-            <span style="font-size:18px;">
-              <b> </b> This is a PRO feature!</span>
+            <div class="bg-danger">
+            </div>
           </div>
       </div>
     </div>
