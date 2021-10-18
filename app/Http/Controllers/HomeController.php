@@ -23,4 +23,28 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+
+
+    public function purchases()
+    {
+        return view('purchases');
+    }
+
+
+    public function sales()
+    {
+        return view('sales');
+    }
+
+
+    public function makeSale()
+    {
+        return view('make-sale');
+    }
+
+
+    public function carDetails()
+    {
+        return view('car-details');
+    }
 }
