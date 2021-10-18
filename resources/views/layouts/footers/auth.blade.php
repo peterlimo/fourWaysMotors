@@ -15,8 +15,8 @@
       &copy;
       <script>
         document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
-      <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> and <a href="https://www.updivision.com" target="_blank">UPDIVISION</a> for a better web.
+      </script>, made by
+      <a href="https://www.smartlinkjobs.com" target="_blank">HR DIGITAL CONSULTING LIMITED</a>
     </div>
   </div>
 </footer>
