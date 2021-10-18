@@ -67,3 +67,4 @@ Route::group(['middleware' => 'auth'], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/add-purchases', [App\Http\Controllers\HomeController::class, 'addPurchases'])->name('add.purchases');
