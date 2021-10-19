@@ -67,6 +67,7 @@ $(function () {
         ajax: "{{ route('getPurchases') }}",
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'link', name: 'link', orderable: false, searchable: false},
             {data: 'model', name: 'model'},
              {data: 'color', name: 'color'},
              {data: 'reg_no', name: 'reg_no'},

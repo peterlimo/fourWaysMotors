@@ -36,9 +36,10 @@ class HomeController extends Controller
     }
 
 
-    public function makeSale()
+    public function makeSale($car_id)
     {
-        return view('make-sale');
+        $car = Purchases::where('id', $car_id)->firstOrFail();
+        return view('make-sale', compact("car"));
     }
 
     public function storeSale($car_id)
@@ -136,9 +137,10 @@ class HomeController extends Controller
     }
 
 
-    public function carDetails()
+    public function carDetails($car_id)
     {
-        return view('car-details');
+        $car = Purchases::where('id', $car_id)->firstOrFail();
+        return view('car-details', compact("car", "car_id"));
     }
     
     public function addPurchases()
@@ -157,12 +159,19 @@ class HomeController extends Controller
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('link', function($row){
+                    $actionBtn = '<a href="/car-details/'.$row['car_id'].'" class="edit pl-0 btn-sm">'.$row['make'].' '.$row['model']. '</a>';
+                    return $actionBtn;
+                })
+
+                ->rawColumns(['action','link'])
                 ->make(true);
         }
 
         return view('sales');
     }
+
+
     public function storePurchases(){
         $data = request()->validate([
             'model'=>"required",
@@ -244,11 +253,6 @@ class HomeController extends Controller
         return back()->with('success', 'Purchases successfully added.');
     }
     
-    // public function getPurchases()
-    // {
-    //     $purchases = Purchases::all();
-    //     return view('purchases', compact('purchases'));
-    // }
 
     public function getData(Request $request)
     {
@@ -259,8 +263,12 @@ class HomeController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
-                })               
-                ->rawColumns(['action'])
+                }) 
+                ->addColumn('link', function($row){
+                    $actionBtn = '<a href="/car-details/'.$row['id'].'" class="edit pl-0 btn-sm">'.$row['make'].' '.$row['model'].'</a>';
+                    return $actionBtn;
+                })              
+                ->rawColumns(['action', 'link'])
                 ->make(true);
         }
         return view('purchases');

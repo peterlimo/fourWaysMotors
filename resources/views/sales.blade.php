@@ -44,7 +44,12 @@
         ajax: "{{ route('get.sales') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'model', name: 'model'},
+            {
+                data: 'link', 
+                name: 'link', 
+                orderable: true, 
+                searchable: true
+            },
             {data: 'color', name: 'color'},
             {data: 'company_name', name: 'company_name'},
             {data: 'email', name: 'email'},

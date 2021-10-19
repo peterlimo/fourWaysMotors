@@ -5,11 +5,11 @@
     <div class="container-fluid">
       <div class="row" >
         <div class="col-md-12" style="height:fit-content">
-          <form method="post" action="/make-sale/10" autocomplete="off" class="form-horizontal">
+          <form method="post" action="/make-sale/{{ $car_id }}" autocomplete="off" class="form-horizontal">
             @csrf
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">New sele</h4>
+                <h4 class="card-title">New sale</h4>
                 <p class="card-category">Car details</p>
               </div>
               <div class="card-body ">
@@ -30,7 +30,7 @@
                     <label class="col-sm-12 col-form-label">Make</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('make') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('make') ? ' is-invalid' : '' }}" name="make" id="input-make" value="{{old('make') }}" type="text" placeholder="make" required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('make') ? ' is-invalid' : '' }}" name="make" id="input-make" value="{{old('make') ?? $car->make }}" type="text" placeholder="make" required="true" aria-required="true"/>
                         @if ($errors->has('make'))
                             <span id="make-error" class="error text-danger" for="input-make">{{ $errors->first('make') }}</span>
                         @endif
@@ -42,7 +42,7 @@
                     <label class="col-sm-12 col-form-label">Model</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('model') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('model') ? ' is-invalid' : '' }}" name="model" id="input-model" value="{{old('model') }}" type="text" placeholder="model" required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('model') ? ' is-invalid' : '' }}" name="model" id="input-model" value="{{old('model') ?? $car->model }}" type="text" placeholder="model" required="true" aria-required="true"/>
                         @if ($errors->has('model'))
                             <span id="model-error" class="error text-danger" for="input-model">{{ $errors->first('model') }}</span>
                         @endif
@@ -54,7 +54,7 @@
                     <label class="col-sm-12 col-form-label">Year of Make</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('y_o_m') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('y_o_m') ? ' is-invalid' : '' }}" name="y_o_m" value="{{old('y_o_m') }}" id="input-y_o_m" type="text" placeholder="Year of making" value="" required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('y_o_m') ? ' is-invalid' : '' }}" name="y_o_m" value="{{old('y_o_m') ?? $car->y_o_m }}" id="input-y_o_m" type="text" placeholder="Year of making" value="" required="true" aria-required="true"/>
                         @if ($errors->has('y_o_m'))
                             <span id="y_o_m-error" class="error text-danger" for="input-y_o_m">{{ $errors->first('y_o_m') }}</span>
                         @endif
@@ -68,7 +68,7 @@
                     <label class="col-sm-12 col-form-label">Color</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('color') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}" name="color" id="input-color" value="{{old('color') }}" type="text" placeholder="i.e. Yellow ,Black" required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}" name="color" id="input-color" value="{{old('color') ?? $car->price }}" type="text" placeholder="i.e. Yellow ,Black" required="true" aria-required="true"/>
                         @if ($errors->has('color'))
                             <span id="color-error" class="error text-danger" for="input-color">{{ $errors->first('color') }}</span>
                         @endif
@@ -80,7 +80,7 @@
                     <label class="col-sm-12 col-form-label">Registration Number</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('reg_no') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('reg_no') ? ' is-invalid' : '' }}" name="reg_no" id="input-reg_no" type="text" value="{{old('reg_no') }}" placeholder="i.e. KAB 225Y"  required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('reg_no') ? ' is-invalid' : '' }}" name="reg_no" id="input-reg_no" type="text" value="{{old('reg_no') ?? $car->reg_no }}" placeholder="i.e. KAB 225Y"  required="true" aria-required="true"/>
                         @if ($errors->has('reg_no'))
                             <span id="reg_no-error" class="error text-danger" for="input-reg_no">{{ $errors->first('reg_no') }}</span>
                         @endif
@@ -92,7 +92,7 @@
                     <label class="col-sm-12 col-form-label">Log Book Number</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('log_book_no') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('log_book_no') ? ' is-invalid' : '' }}" name="log_book_no" id="input-log_book_no" type="text" placeholder="Log Book number" value="{{ old('log_book_no') }}" required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('log_book_no') ? ' is-invalid' : '' }}" name="log_book_no" id="input-log_book_no" type="text" placeholder="Log Book number" value="{{ old('log_book_no') ?? $car->log_book_no }}" required="true" aria-required="true"/>
                         @if ($errors->has('log_book_no'))
                             <span id="log_book_no-error" class="error text-danger" for="input-log_book_no">{{ $errors->first('log_book_no') }}</span>
                         @endif
@@ -106,7 +106,7 @@
                     <label class="col-sm-12 col-form-label">Engine Number</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('engine_no') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('engine_no') ? ' is-invalid' : '' }}" name="engine_no" id="input-engine_no" type="text" placeholder="{{ __('engine_no') }}" value="{{ old('engine_no') }}" required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('engine_no') ? ' is-invalid' : '' }}" name="engine_no" id="input-engine_no" type="text" placeholder="{{ __('engine_no') }}" value="{{ old('engine_no') ?? $car->engine_no }}" required="true" aria-required="true"/>
                         @if ($errors->has('engine_no'))
                             <span id="engine_no-error" class="error text-danger" for="input-engine_no">{{ $errors->first('engine_no') }}</span>
                         @endif
@@ -118,7 +118,7 @@
                     <label class="col-sm-12 col-form-label">Chasis Number</label>
                     <div class="col-sm-12">
                         <div class="form-group{{ $errors->has('chasis_no') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('chasis_no') ? ' is-invalid' : '' }}" name="chasis_no" id="input-chasis_no" type="text" placeholder="{{ __('chasis_no') }}" value="{{ old('chasis_no') }}" required="true" aria-required="true"/>
+                        <input class="form-control{{ $errors->has('chasis_no') ? ' is-invalid' : '' }}" name="chasis_no" id="input-chasis_no" type="text" placeholder="{{ __('chasis_no') }}" value="{{ old('chasis_no') ?? $car->chasis_no }}" required="true" aria-required="true"/>
                         @if ($errors->has('chasis_no'))
                             <span id="chasis_no-error" class="error text-danger" for="input-chasis_no">{{ $errors->first('chasis_no') }}</span>
                         @endif
