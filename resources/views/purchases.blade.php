@@ -25,26 +25,13 @@
             <tr>
             <th>ID</th>
                 <th>MODEL</th>
-                <th>MAKE</th>
-                <th>Y O M</th>
                 <th>COLOR</th>
                 <th>REG NO</th>
-                <th>LOG BOOK NO</th>
-                <th>ENGINE NO</th>
-                <th>CHASIS NO</th>
                 <th>PRICE</th>
                 <th>SURPLIER TYPE</th>
-                <th>COMPANY NAME</th>
-                <th>FIRST NAME</th>
-                <th>MIDDLE NAME</th>
-                <th>LAST NAME</th>
-                <th>CITY</th>
                 <th>PHONE NUMBER</th>
                 <th>EMAIL</th>
-                <th>NATIONAL ID</th>
-                <th>KRA PIN</th>
                 <th>PURCHASE DATE</th>
-                <th>DESCRIPTION</th>     
                 <th>ACTION</th>       
             </tr>
             
@@ -81,26 +68,13 @@ $(function () {
         columns: [
             {data: 'id', name: 'id'},
             {data: 'model', name: 'model'},
-             {data: 'make', name: 'make'},
-             {data: 'y_o_m', name: 'y_o_m'},
              {data: 'color', name: 'color'},
              {data: 'reg_no', name: 'reg_no'},
-             {data: 'log_book_no', name: 'log_book_no'},
-             {data: 'engine_no', name: 'engine_no'},
-             {data: 'chasis_no', name: 'chasis_no'},
              {data: 'price', name: 'price'},
              {data: 'surplier_type', name: 'surplier_type'},
-             {data: 'company_name', name: 'company_name'},
-             {data: 'first_name', name: 'first_name'},
-             {data: 'middle_name', name: 'middle_name'},
-             {data: 'last_name', name: 'last_name'},
-             {data: 'city', name: 'city'},
              {data: 'phone_number', name: 'phone_number'},
              {data: 'email', name: 'email'},
-             {data: 'national_id', name: 'national_id'},
-             {data: 'kra_pin', name: 'kra_pin'},
              {data: 'purchase_date', name: 'purchase_date'},
-             {data: 'description', name: 'description'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
