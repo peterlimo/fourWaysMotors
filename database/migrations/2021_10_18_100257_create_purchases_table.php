@@ -30,7 +30,7 @@ class CreatePurchasesTable extends Migration
             $table->string('middle_name');
             $table->string('last_name');
             $table->string('city');
-            $table->string('phone_no');
+            $table->string('phone_number');
             $table->string('email');
             $table->string('national_id');
             $table->string('kra_pin');
