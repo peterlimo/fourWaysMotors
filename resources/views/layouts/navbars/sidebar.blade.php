@@ -42,7 +42,7 @@
         </div>
       </li>
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('sales') }}">
+        <a class="nav-link" href="/sales">
           <i class="material-icons">content_paste</i>
             <p>Sales</p>
         </a>

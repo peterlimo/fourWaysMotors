@@ -14,6 +14,9 @@ class Sale extends Model
         'car_id',
         'price',
         'balance',
+        'model',
+        'make',
+        'color',
         'amount_paid',
         'buyer_type',
         'company_name',
@@ -27,6 +30,8 @@ class Sale extends Model
         'description',
         'phone_number',
         'city',
+        'email',
+        'y_o_m'
     ];
 
     public function purchase(){

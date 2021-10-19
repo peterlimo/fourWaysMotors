@@ -15,22 +15,26 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
+            $table->string('model');
+            $table->string('make');
+            $table->string('color');
             $table->integer('car_id');
-            $table->float('price');
-            $table->string('amount_paid');
-            $table->string('balance');
+            $table->float('price', 12, 2);
+            $table->float('amount_paid', 12, 2);
+            $table->float('balance', 12, 2);
             $table->string('city');
             $table->string('buyer_type');
-            $table->string('company_name');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('middle_name');
+            $table->string('y_o_m');
+            $table->string('company_name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullablle();
+            $table->string('middle_name')->nullable();
             $table->string('phone_number');
             $table->string('kra_pin');
             $table->string('email');
-            $table->string('national_id');
+            $table->string('national_id')->nullable();
             $table->date('sales_date');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
 
             
