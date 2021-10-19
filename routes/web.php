@@ -71,9 +71,8 @@ Route::get('/purchases', [App\Http\Controllers\HomeController::class, 'purchases
 Route::get('/make-sale/{car_id}', [App\Http\Controllers\HomeController::class, 'makeSale'])->name('make.sale');
 Route::get('/car-details/{car_id}', [App\Http\Controllers\HomeController::class, 'carDetails'])->name('car.details');
 Route::get('/add-purchases', [App\Http\Controllers\HomeController::class, 'addPurchases'])->name('add.purchases');
-
+Route::get('/edit-purchases/{car_id}', [App\Http\Controllers\HomeController::class, 'editPurchases'])->name('edit.purchases');
 Route::get('/sales', [App\Http\Controllers\HomeController::class, 'getSales'])->name('get.sales');
-
 // post routes
 Route::post('/make-sale/{car_id}', [App\Http\Controllers\HomeController::class, 'storeSale'])->name('store.sale');
 // Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getData'])->name('purchases');
@@ -84,5 +83,7 @@ Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getDa
 
 // post routes
 Route::post('/add-purchases', [App\Http\Controllers\HomeController::class, 'storePurchases'])->name('store.purchases');
+//put routes
+Route::put('/edit-purchases/{car_id}', [App\Http\Controllers\HomeController::class, 'updatePurchases'])->name('update.purchases');
 
 
