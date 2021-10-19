@@ -30,6 +30,7 @@ class Purchases extends Model
         'national_id',
         'kra_pin',
         'purchase_date',
-        'description'        
+        'description',
+        'status'        
     ];
 }

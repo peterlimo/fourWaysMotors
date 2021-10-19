@@ -36,6 +36,7 @@ class CreatePurchasesTable extends Migration
             $table->string('kra_pin');
             $table->string('purchase_date');
             $table->string('description');
+            $table->string('status')->default("NOT SOLD");
             $table->timestamps();
         });
     }
