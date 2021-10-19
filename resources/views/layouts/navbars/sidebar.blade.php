@@ -32,7 +32,7 @@
                 <span class="sidebar-normal">{{ __('Add new purchases') }} </span>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'all_purchases' ? ' active' : '' }}">
               <a class="nav-link" href="/all-purchases">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('All purchases') }} </span>
@@ -41,7 +41,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'sales' ? ' active' : '' }}">
         <a class="nav-link" href="/sales">
           <i class="material-icons">content_paste</i>
             <p>Sales</p>
