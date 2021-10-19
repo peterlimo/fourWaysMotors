@@ -76,3 +76,13 @@ Route::get('/sales', [App\Http\Controllers\HomeController::class, 'getSales'])->
 
 // post routes
 Route::post('/make-sale/{car_id}', [App\Http\Controllers\HomeController::class, 'storeSale'])->name('store.sale');
+// Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getData'])->name('purchases');
+Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getData'])->name('getPurchases');
+
+
+// Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getData'])->name('students.list');
+
+// post routes
+Route::post('/add-purchases', [App\Http\Controllers\HomeController::class, 'storePurchases'])->name('store.purchases');
+
+

@@ -33,7 +33,7 @@
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('user.index') }}">
+              <a class="nav-link" href="/all-purchases">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('All purchases') }} </span>
               </a>
