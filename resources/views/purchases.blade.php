@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'all_purchases', 'titlePage' => __('Table List')])
+@extends('layouts.app', ['activePage' => 'purchases', 'titlePage' => __('All Purchases')])
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -14,13 +14,13 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title ">Purchases</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
+            <p class="card-category"> Search and View Your Products</p>
           </div>
           <div class="card-body">
            
             <div class="table-responsive">
             
-            <table class="table table-bordered datatable">
+            <table class="table datatable">
         <thead>
             <tr>
             <th>ID</th>
@@ -64,6 +64,7 @@ $(function () {
         processing: true,
         serverSide: true,
         autoWidth: false,
+        "ordering": false,
         ajax: "{{ route('getPurchases') }}",
         columns: [
             {data: 'id', name: 'id'},

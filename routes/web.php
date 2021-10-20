@@ -27,9 +27,9 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
+	Route::get('available-stock', function () {
+		return view('pages.available-stock');
+	})->name('available-stock');
 
 	Route::get('typography', function () {
 		return view('pages.typography');
@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Auth::routes();
-
+//get routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/purchases', [App\Http\Controllers\HomeController::class, 'purchases'])->name('purchases');
 Route::get('/make-sale/{car_id}', [App\Http\Controllers\HomeController::class, 'makeSale'])->name('make.sale');
