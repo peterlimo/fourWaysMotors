@@ -39,7 +39,7 @@ class HomeController extends Controller
     public function makeSale($car_id)
     {
         $car = Purchases::where('id', $car_id)->firstOrFail();
-        return view('make-sale', compact("car"));
+        return view('make-sale', compact("car", "car_id"));
     }
 
     public function storeSale($car_id)

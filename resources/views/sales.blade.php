@@ -8,7 +8,7 @@
 <div class="content">
   <div class="container-fluid">
   <div class="container mt-5">
-    <table class="table table-stripped yajra-datatable">
+    <table class="table yajra-datatable">
         <thead>
             <tr>
                 <th>Serial</th>
@@ -41,6 +41,7 @@
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
+        ordering: false,
         ajax: "{{ route('get.sales') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},

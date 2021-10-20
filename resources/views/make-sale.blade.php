@@ -3,7 +3,7 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
-      <div class="row" >
+      <div class="row" style="overflow-y: scroll; height:600px;">
         <div class="col-md-12" style="height:fit-content">
           <form method="post" action="/make-sale/{{ $car_id }}" autocomplete="off" class="form-horizontal">
             @csrf
