@@ -40,6 +40,16 @@ class HomeController extends Controller
     {
         return view('make-sale');
     }
+    public function carDetails()
+    {
+        return view('car-details');
+    }
+    
+    public function addPurchases()
+    {
+        return view('add-purchases');
+    }
+
 
     public function storeSale($car_id)
     {
@@ -136,15 +146,6 @@ class HomeController extends Controller
     }
 
 
-    public function carDetails()
-    {
-        return view('car-details');
-    }
-    
-    public function addPurchases()
-    {
-        return view('add-purchases');
-    }
 
 
     public function getSales(Request $request)
@@ -347,6 +348,21 @@ class HomeController extends Controller
     {
         $car = Purchases::Where('id', $car_id)->firstOrFail();
         return view('edit-purchases', compact('car'));
+    }
+    public function getAvailableStock()
+    {
+        if ($request->ajax()) {
+            $data = Purchases::latest()->where('status','NOT SOLD')->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="/edit-purchases/'.$row['id'].'" class="edit btn btn-success btn-sm">Edit</a>';
+                    return $actionBtn;
+                })               
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('available-stock');
     }
 
 }
