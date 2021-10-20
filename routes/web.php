@@ -26,10 +26,7 @@ Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('available-stock', function () {
-		return view('pages.available-stock');
-	})->name('available-stock');
+Route::group(['middleware' => 'auth'], function () {	
 
 	Route::get('typography', function () {
 		return view('pages.typography');
@@ -68,18 +65,20 @@ Auth::routes();
 //get routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/purchases', [App\Http\Controllers\HomeController::class, 'purchases'])->name('purchases');
+Route::get('/sales', [App\Http\Controllers\HomeController::class, 'getSales'])->name('get.sales');
 Route::get('/make-sale/{car_id}', [App\Http\Controllers\HomeController::class, 'makeSale'])->name('make.sale');
 Route::get('/car-details/{car_id}', [App\Http\Controllers\HomeController::class, 'carDetails'])->name('car.details');
 Route::get('/add-purchases', [App\Http\Controllers\HomeController::class, 'addPurchases'])->name('add.purchases');
 Route::get('/edit-purchases/{car_id}', [App\Http\Controllers\HomeController::class, 'editPurchases'])->name('edit.purchases');
-Route::get('/sales', [App\Http\Controllers\HomeController::class, 'getSales'])->name('get.sales');
+Route::get('/stock', [App\Http\Controllers\HomeController::class, 'getSales'])->name('get.stock');
+Route::get('available-stock', [App\Http\Controllers\HomeController::class, 'getAvailableStock'])->name('available-stock');
+
+
 // post routes
 Route::post('/make-sale/{car_id}', [App\Http\Controllers\HomeController::class, 'storeSale'])->name('store.sale');
-// Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getData'])->name('purchases');
 Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getData'])->name('getPurchases');
 
 
-// Route::get('/all-purchases', [App\Http\Controllers\HomeController::class, 'getData'])->name('students.list');
 
 // post routes
 Route::post('/add-purchases', [App\Http\Controllers\HomeController::class, 'storePurchases'])->name('store.purchases');

@@ -69,6 +69,7 @@ class HomeController extends Controller
             "description"=>"",
         ]);
 
+        $balance = $data['price'] - $data['amount_paid'];
 
         if($data['buyer_type'] == "company"){
             $company_name = request()->validate([
@@ -78,7 +79,7 @@ class HomeController extends Controller
             $sale = Sale::create([
                 "car_id" => $car_id,
                 "make"=> $data['make'],
-                "amount_paid"=> 1000,
+                "amount_paid"=> $data['amount_paid'],
                 "price"=> $data['price'],
                 "model"=>$data['model'],            
                 "reg_no"=>$data['reg_no'],          
@@ -98,7 +99,7 @@ class HomeController extends Controller
                 "middle_name"=>"n/a",          
                 "last_name"=>"n/a",         
                 "national_id"=>"n/a",    
-                "balance"=>0,
+                "balance"=>$balance,
                 "company_name"=>$company_name['company_name'], 
             ]);
                    
@@ -109,11 +110,12 @@ class HomeController extends Controller
                 "last_name"=>"",          
                 "national_id"=>"required", 
             ]);
+
             
             $sale = Sale::create([
                 "car_id" => $car_id,
                 "make"=> $data['make'],
-                "amount_paid"=> 1000,
+                "amount_paid"=> $data['amount_paid'],
                 "model"=>$data['model'], 
                 "price"=>$data['price'],            
                 "reg_no"=>$data['reg_no'],          
@@ -126,7 +128,7 @@ class HomeController extends Controller
                 "phone_number"=>$data['phone_number'],          
                 "city"=>$data['city'], 
                 "email"=>$data['email'],   
-                "balance"=>0,          
+                "balance"=>$balance,          
                 "kra_pin"=>$data['kra_number'],          
                 "sales_date"=>$data['date_of_sale'], 
                 "description"=>$data['description'],        
@@ -138,6 +140,11 @@ class HomeController extends Controller
             ]);
         }
 
+        $car = Purchases::where("id", $car_id)->firstOrFail();
+        $car->update([
+            'status'=>"SOLD"
+        ]);
+
         return back()->with("success", "Sales added successfully");
     }
 
@@ -145,7 +152,12 @@ class HomeController extends Controller
     public function carDetails($car_id)
     {
         $car = Purchases::where('id', $car_id)->firstOrFail();
-        return view('car-details', compact("car", "car_id"));
+        if($car->status == "SOLD"){
+            $sale_detail = Sale::where("car_id", $car_id)->firstOrFail();
+        }elseif($car->status == "NOT SOLD"){
+            $sale_detail = "null";
+        }
+        return view('car-details', compact("car", "car_id", "sale_detail"));
     }
     
 
@@ -362,17 +374,23 @@ class HomeController extends Controller
         $car = Purchases::Where('id', $car_id)->firstOrFail();
         return view('edit-purchases', compact('car'));
     }
-    public function getAvailableStock()
+
+    
+    public function getAvailableStock(Request $request)
     {
         if ($request->ajax()) {
             $data = Purchases::latest()->where('status','NOT SOLD')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="/edit-purchases/'.$row['id'].'" class="edit btn btn-success btn-sm">Edit</a>';
+                    $actionBtn = '<a href="/make-sale/'.$row['id'].'" class="edit btn btn-success btn-sm">Make sale</a>';
+                    return $actionBtn;
+                })  
+                ->addColumn('link', function($row){
+                    $actionBtn = '<a href="/car-details/'.$row['id'].'" class="edit pl-0 btn-sm">'.$row['make'].' '.$row['model'].'</a>';
                     return $actionBtn;
                 })               
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'link'])
                 ->make(true);
         }
         return view('available-stock');

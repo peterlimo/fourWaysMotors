@@ -13,13 +13,17 @@
           YOM {{ $car->y_o_m }} | <a href="">Other {{ $car->make }} cars. </a>
           <hr>
           {{ $car->reg_no }} | <small>{{ $car->color }}</small>
-          <h3>Ksh. <span class="text-danger">{{ $car->price / 1000 }} m</span></h3>
+          <h3>Ksh. <span class="text-danger">{{ $car->price / 1000000 }} m</span></h3>
           <p class="mt-3 text-justify">
-            {{ $car->description }}
+          {{ $car->description }}{{ $car->sale }}
           </p>
-          <button class="btn-outline-success btn btn-sm mt-5">Sale details</button>
-          <a href="/make-sale/{{ $car_id }}"><button class="btn-outline-success btn btn-sm mt-5">Sell car</button></a>
-          <a href="/make-sale/{{ $car_id }}"><button class="btn-outline-success btn btn-sm mt-5">Purchase details</button></a>
+
+          @if($sale_detail != 'null')
+            <button class="btn-outline-success btn btn-sm mt-5">Sale details</button>
+          @else
+            <a href="/make-sale/{{ $car_id }}"><button class="btn-outline-success btn btn-sm mt-5">Sell car</button></a>
+          @endif
+            <a href="/make-sale/{{ $car_id }}"><button class="btn-outline-success btn btn-sm mt-5">Purchase details</button></a>
         </div>
         <div class="col-md-7 mt-3 offset-md-5">
           <h4>Specifications</h4>
